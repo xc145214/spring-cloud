@@ -12,19 +12,20 @@
  *************************************************************************/
 package com.github.xc145214.service;
 
-import org.springframework.cloud.netflix.feign.FeignClient;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.stereotype.Component;
+import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestParam;
 
 /**
+ * 断路回调类。
  *
- * @author xiachuan at 2017/5/12 15:42。
+ * @author xiachuan at 2017/5/12 16:42。
  */
-@FeignClient(value = "compute-service",fallback = ComputeClientHystrix.class)
-public interface ComputeClient {
-
-    @RequestMapping(method = RequestMethod.GET, value = "/add")
-    Integer add(@RequestParam(value = "a") Integer a, @RequestParam(value = "b") Integer b);
+@Component
+public class ComputeClientHystrix implements ComputeClient {
+    @Override
+    public Integer add(@RequestParam(value = "a") Integer a, @RequestParam(value = "b") Integer b) {
+        return -999;
+    }
 }
 
