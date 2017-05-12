@@ -10,27 +10,29 @@
  * DOES NOT EVIDENCE PUBLICATION OF THE PROGRAM.
  *                  HONGLING CAPITAL CONFIDENTIAL AND PROPRIETARY
  *************************************************************************/
-package com.github.xc145214.web;
+package com.github.xc145214.service;
 
-import com.github.xc145214.service.ComputeService;
+import com.netflix.hystrix.contrib.javanica.annotation.HystrixCommand;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.stereotype.Service;
 import org.springframework.web.client.RestTemplate;
 
 /**
- * @author xiachuan at 2017/5/12 15:16。
+ * @author xiachuan at 2017/5/12 16:03。
  */
-@RestController
-public class ConsumerController {
+@Service
+public class ComputeService {
 
     @Autowired
-    private ComputeService computeService;
+    RestTemplate restTemplate;
 
-    @RequestMapping(value = "/add", method = RequestMethod.GET)
-    public String add() {
-        return computeService.addService();
+    @HystrixCommand(fallbackMethod = "addServiceFallback")
+    public String addService() {
+        return restTemplate.getForEntity("http://COMPUTE-SERVICE/add?a=10&b=20", String.class).getBody();
+    }
+
+    public String addServiceFallback() {
+        return "service error";
     }
 }
 
