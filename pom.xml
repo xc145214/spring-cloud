@@ -63,10 +63,6 @@
                 <groupId>org.springframework.boot</groupId>
                 <artifactId>spring-boot-maven-plugin</artifactId>
             </plugin>
-        </plugins>
-    </build>
-    <!--<build>-->
-        <!--<plugins>-->
             <!--<plugin>-->
                 <!--<groupId>org.apache.maven.plugins</groupId>-->
                 <!--<artifactId>maven-compiler-plugin</artifactId>-->
@@ -74,9 +70,9 @@
                 <!--<configuration>-->
                     <!--<source>${project.compiler}</source>-->
                     <!--<target>${project.compiler}</target>-->
-                    <!--&lt;!&ndash;<encoding>${project.build.sourceEncoding}</encoding>&ndash;&gt;-->
+                    <!--<encoding>${project.build.sourceEncoding}</encoding>-->
                 <!--</configuration>-->
             <!--</plugin>-->
-        <!--</plugins>-->
-    <!--</build>-->
+        </plugins>
+    </build>
 </project>
