@@ -14,10 +14,12 @@ package com.github.xc145214;
 
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.boot.builder.SpringApplicationBuilder;
+import org.springframework.cloud.client.discovery.EnableDiscoveryClient;
 
 /**
  * @author xiachuan at 2017/5/17 17:13。
  */
+@EnableDiscoveryClient
 @SpringBootApplication
 public class ConfigClientApplication {
 
