@@ -13,6 +13,8 @@
         <module>config-server</module>
         <module>config-client</module>
         <module>api-gateway</module>
+        <module>service-A</module>
+        <module>service-B</module>
     </modules>
     <packaging>pom</packaging>
 
